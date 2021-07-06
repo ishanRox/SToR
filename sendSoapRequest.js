@@ -1,7 +1,7 @@
 const soap = require("soap");
 
 function soapCall(wsdlUrl, tagArgs, soapTag) {
- 
+console.log(tagArgs); 
   return new Promise((resolve, reject) => {
     
     const soapCall = (err, result) => {
@@ -9,7 +9,8 @@ function soapCall(wsdlUrl, tagArgs, soapTag) {
     };
 
     const clientInit = (err, client) => {
-      client[soapTag]({dNum:tagArgs}, soapCall);
+      console.log({...tagArgs});
+      client[soapTag](tagArgs, soapCall);
     };
 
     soap.createClient(wsdlUrl, clientInit);

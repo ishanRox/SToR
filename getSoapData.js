@@ -1,6 +1,6 @@
 const { json } = require("body-parser");
 const soap = require("soap");
-const { regexParser } = require("./regexParser");
+const { regexParser } = require("./parsers/regexParser");
 
 async function getSoapData(wsdlUrl) {
   return new Promise((resolve, reject) => {
