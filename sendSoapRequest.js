@@ -9,11 +9,11 @@ console.log(tagArgs);
     };
 
     const clientInit = (err, client) => {
-      console.log({...tagArgs});
+   
       client[soapTag](tagArgs, soapCall);
     };
 
-    soap.createClient(wsdlUrl, clientInit);
+    soap.createClient(wsdlUrl,[{disableCache:true}], clientInit);
   });
 }
 

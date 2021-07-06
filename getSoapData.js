@@ -9,9 +9,7 @@ async function getSoapData(wsdlUrl) {
         e.includes("Number")
       );
 
-      const tagsWithArgs = regexParser(client.wsdl.xml);
-
-      resolve(tagsWithArgs);
+      resolve(client.describe());
     };
     soap.createClient(wsdlUrl, clientInit);
   });
