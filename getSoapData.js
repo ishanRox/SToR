@@ -8,7 +8,7 @@ async function getSoapData(wsdlUrl) {
       let methods = Object.getOwnPropertyNames(client).filter((e) =>
         e.includes("Number")
       );
-
+      console.log(client.getSoapHeaders());
       resolve(client.describe());
     };
     soap.createClient(wsdlUrl, clientInit);
