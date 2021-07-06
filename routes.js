@@ -9,11 +9,7 @@ router.post("/api/wsdlTags", async (req, res, next) => {
   const wsdlUrl = req.body.url;
   const tagData = await getSoapData(wsdlUrl);
 
-  const childTags = tagData?.children[1].children[1].children
-    .filter((e) => e.name === "xs:element")
-    .map((e) => [e["attr"], e["children"]]);
-
-  res.status(201).json(childTags);
+  res.status(201).json(tagData);
 });
 
 //create endpoints using soap tag list
