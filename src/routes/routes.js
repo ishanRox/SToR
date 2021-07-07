@@ -5,7 +5,7 @@ const {
   getWsdlTags,
   createEndpoint,
   soapRequest,
-} = require("./soap_controller");
+} = require("../controller/soap_controller");
 
 //get soap tag list
 router.post("/api/wsdlTags", getWsdlTags);
