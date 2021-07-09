@@ -8,10 +8,22 @@ function soapCall(wsdlUrl, tagArgs, soapTag) {
     };
 
     const clientInit = (err, client) => {
+      if (err) console.log(err);
+
+      client.setSecurity(new soap.BasicAuthSecurity("username", "password"));
       client[soapTag](tagArgs, soapCall);
     };
-
-    soap.createClient(wsdlUrl, [{ disableCache: true }], clientInit);
+    //remove strictSSL
+    var req = require("request").defaults({
+      strictSSL: false,
+    });
+    soap.createClient(
+      wsdlUrl,
+      {
+        request: req,
+      },
+      clientInit
+    );
   });
 }
 
